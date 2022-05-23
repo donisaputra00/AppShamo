@@ -1,0 +1,71 @@
+import 'package:flutter/material.dart';
+
+class Dimens {
+  const Dimens._();
+
+  static double width(BuildContext context) =>
+      MediaQuery.of(context).size.width;
+  static double height(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+
+  static const double dp2 = 2;
+  static const double dp4 = 4;
+  static const double dp6 = 6;
+  static const double dp8 = 8;
+  static const double dp10 = 10;
+  static const double dp12 = 12;
+  static const double dp13 = 13;
+  static const double dp14 = 14;
+  static const double dp15 = 15;
+  static const double dp16 = 16;
+  static const double dp17 = 17;
+  static const double dp18 = 18;
+  static const double dp20 = 20;
+  static const double dp22 = 22;
+  static const double dp24 = 24;
+  static const double dp25 = 25;
+  static const double dp26 = 26;
+  static const double dp28 = 28;
+  static const double dp30 = 30;
+  static const double dp32 = 32;
+  static const double dp34 = 34;
+  static const double dp36 = 36;
+  static const double dp38 = 38;
+  static const double dp40 = 40;
+  static const double dp42 = 42;
+  static const double dp44 = 44;
+  static const double dp46 = 46;
+  static const double dp48 = 48;
+  static const double dp50 = 50;
+  static const double dp54 = 54;
+  static const double dp60 = 60;
+  static const double dp64 = 64;
+  static const double dp70 = 70;
+  static const double dp74 = 74;
+  static const double dp75 = 75;
+  static const double dp80 = 80;
+  static const double dp90 = 90;
+  static const double dp100 = 100;
+  static const double dp120 = 120;
+  static const double dp125 = 125;
+  static const double dp150 = 150;
+  static const double dp155 = 155;
+  static const double dp175 = 175;
+  static const double dp200 = 200;
+  static const double dp215 = 215;
+  static const double dp230 = 230;
+  static const double dp250 = 250;
+  static const double dp255 = 255;
+  static const double dp278 = 278;
+  static const double dp300 = 300;
+  static const double dp310 = 310;
+  static const double dp400 = 400;
+  static const double dp500 = 500;
+  static const double dp600 = 600;
+  static const double dp700 = 700;
+  static const double dp800 = 800;
+  static const double dp900 = 900;
+  static const double dp1000 = 1000;
+
+  static const double defaultMargin = 30;
+}
