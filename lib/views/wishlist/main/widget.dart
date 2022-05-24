@@ -27,7 +27,7 @@ class WishlistCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(Dimens.dp12),
             child: Image.network(
-              product.galeries[0].url,
+              product.galeries![0].url,
               width: Dimens.dp60,
             ),
           ),
@@ -39,7 +39,7 @@ class WishlistCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product.name,
+                  product.name!,
                   style: AppTextStyle.primaryTextStyle.copyWith(
                     fontWeight: AppTextStyle.semiBold,
                   ),

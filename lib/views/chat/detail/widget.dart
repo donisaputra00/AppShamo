@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shamo/models/models.dart';
 import 'package:shamo/resources/resources.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -7,12 +8,12 @@ class ChatBubble extends StatelessWidget {
     Key? key,
     this.text = '',
     this.isSender = false,
-    this.hasProduct = false,
+    required this.product,
   }) : super(key: key);
 
   final String text;
   final bool isSender;
-  final bool hasProduct;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +40,8 @@ class ChatBubble extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(Dimens.dp12),
-                  child: Image.asset(
-                    MainAssets.product,
+                  child: Image.network(
+                    product.galeries![0].url,
                     width: Dimens.dp70,
                   ),
                 ),
@@ -52,12 +53,12 @@ class ChatBubble extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'COURT VISION 2.0 SHOES',
+                        product.name!,
                         style: AppTextStyle.primaryTextStyle,
                       ),
                       Text(
                         // ignore: use_raw_strings
-                        '\$57,15',
+                        '\$${product.price!}',
                         style: AppTextStyle.priceTextStyle.copyWith(
                           fontWeight: AppTextStyle.medium,
                         ),
@@ -123,7 +124,7 @@ class ChatBubble extends StatelessWidget {
         crossAxisAlignment:
             isSender ? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
-          if (hasProduct) productPreview() else const SizedBox(),
+          if (product is UninitializedProductModel) const SizedBox() else productPreview(),
           Row(
             mainAxisAlignment:
                 isSender ? MainAxisAlignment.end : MainAxisAlignment.start,

@@ -29,7 +29,7 @@ class CheckoutCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Dimens.dp12),
               image: DecorationImage(
-                image: NetworkImage(cart.product.galeries[0].url),
+                image: NetworkImage(cart.product.galeries![0].url),
               ),
             ),
           ),
@@ -41,7 +41,7 @@ class CheckoutCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  cart.product.name,
+                  cart.product.name!,
                   style: AppTextStyle.primaryTextStyle.copyWith(
                     fontWeight: AppTextStyle.semiBold,
                   ),

@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:shamo/models/models.dart';
+import 'package:shamo/providers/auth.dart';
 import 'package:shamo/resources/resources.dart';
+import 'package:shamo/services/message.dart';
 
 import 'widget.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
 
   @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
+  @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
     SystemChrome.restoreSystemUIOverlays();
+
     Widget header() {
       return AppBar(
         backgroundColor: AppColors.bgColor1,
@@ -89,27 +101,34 @@ class ChatPage extends StatelessWidget {
     }
 
     Widget content() {
-      return Expanded(
-        child: Container(
-          width: double.infinity,
-          color: AppColors.bgColor3,
-          child: ListView(
-            padding: const EdgeInsets.symmetric(
-              horizontal: Dimens.defaultMargin,
-            ),
-            children: const [
-              ChatTile(),
-              ChatTile(),
-              ChatTile(),
-              ChatTile(),
-              ChatTile(),
-              ChatTile(),
-              ChatTile(),
-              ChatTile(),
-            ],
-          ),
-        ),
-      );
+      return StreamBuilder<List<MessageModel>>(
+          stream:
+              MessageService().getMessageByUserId(userId: authProvider.user.id),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+
+              if (snapshot.data!.isEmpty) {
+                return emptyChat();
+              }
+
+              return Expanded(
+                child: Container(
+                  width: double.infinity,
+                  color: AppColors.bgColor3,
+                  child: ListView(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: Dimens.defaultMargin,
+                    ),
+                    children: [
+                      ChatTile(snapshot.data!.last),
+                    ],
+                  ),
+                ),
+              );
+            } else {
+              return emptyChat();
+            }
+          });
     }
 
     return Column(

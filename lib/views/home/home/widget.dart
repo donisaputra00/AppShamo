@@ -33,7 +33,7 @@ class ProductCard extends StatelessWidget {
               height: Dimens.dp30,
             ),
             Image.network(
-              product.galeries[0].url,
+              product.galeries![0].url,
               width: Dimens.dp215,
               height: Dimens.dp150,
               fit: BoxFit.cover,
@@ -46,7 +46,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.category.name,
+                    product.category!.name,
                     style: AppTextStyle.secondTextStyle.copyWith(
                       fontSize: Dimens.dp12,
                     ),
@@ -55,7 +55,7 @@ class ProductCard extends StatelessWidget {
                     height: Dimens.dp6,
                   ),
                   Text(
-                    product.name,
+                    product.name!,
                     style: AppTextStyle.blackTextStyle.copyWith(
                       fontSize: Dimens.dp18,
                       fontWeight: AppTextStyle.semiBold,
@@ -104,7 +104,7 @@ class ProductTile extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(Dimens.dp20),
               child: Image.network(
-                product.galeries[0].url,
+                product.galeries![0].url,
                 width: Dimens.dp120,
                 height: Dimens.dp120,
                 fit: BoxFit.cover,
@@ -118,11 +118,11 @@ class ProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.category.name,
+                    product.category!.name,
                     style: AppTextStyle.secondTextStyle,
                   ),
                   Text(
-                    product.name,
+                    product.name!,
                     style: AppTextStyle.primaryTextStyle.copyWith(
                       fontSize: Dimens.dp16,
                       fontWeight: AppTextStyle.semiBold,

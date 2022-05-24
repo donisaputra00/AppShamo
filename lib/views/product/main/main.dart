@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shamo/models/models.dart';
 import 'package:shamo/providers/providers.dart';
 import 'package:shamo/resources/resources.dart';
+import 'package:shamo/views/chat/detail/detail.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage(this.product, {Key? key}) : super(key: key);
@@ -191,7 +192,7 @@ class _ProductPageState extends State<ProductPage> {
             ),
           ),
           CarouselSlider(
-            items: widget.product.galeries
+            items: widget.product.galeries!
                 .map(
                   (image) => Image.network(
                     image.url,
@@ -214,7 +215,7 @@ class _ProductPageState extends State<ProductPage> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: widget.product.galeries.map((e) {
+            children: widget.product.galeries!.map((e) {
               index++;
               return indicator(index);
             }).toList(),
@@ -254,14 +255,14 @@ class _ProductPageState extends State<ProductPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.product.name,
+                          widget.product.name!,
                           style: AppTextStyle.primaryTextStyle.copyWith(
                             fontSize: Dimens.dp18,
                             fontWeight: AppTextStyle.semiBold,
                           ),
                         ),
                         Text(
-                          widget.product.category.name,
+                          widget.product.category!.name,
                           style: AppTextStyle.secondTextStyle.copyWith(
                             fontSize: Dimens.dp12,
                           ),
@@ -296,7 +297,9 @@ class _ProductPageState extends State<ProductPage> {
                       }
                     },
                     child: Image.asset(
-                      wishlistProvider.isWishlist(widget.product) ? MainAssets.loveActive : MainAssets.love,
+                      wishlistProvider.isWishlist(widget.product)
+                          ? MainAssets.loveActive
+                          : MainAssets.love,
                       width: Dimens.dp46,
                     ),
                   ),
@@ -352,7 +355,7 @@ class _ProductPageState extends State<ProductPage> {
                     height: Dimens.dp12,
                   ),
                   Text(
-                    widget.product.description,
+                    widget.product.description!,
                     style: AppTextStyle.secondTextStyle.copyWith(
                       fontWeight: AppTextStyle.light,
                     ),
@@ -408,7 +411,12 @@ class _ProductPageState extends State<ProductPage> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/chat');
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                DetailChatPage(widget.product),
+                          ));
                     },
                     child: Container(
                       width: Dimens.dp54,
